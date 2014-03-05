@@ -13,6 +13,7 @@ Report is an api that allows developers to implement pastebin support for logs i
 ## Entering an api-user-key
 A userkey is needed when you want all pastebins to be created by your pastebin account.
 That can help you to understand what people often need help with.
+
 1. Go to http://pastebin.com/api#1 and get your devkey.
 * When you have your devkey go to http://pastebin.com/api/api_user_key.html and enter in your credentials. You will then get your api-user-key.
 * Go to the pastebin class and enter your api-user-key in the `token` string.
