@@ -12,8 +12,7 @@ import org.bukkit.plugin.Plugin;
 
 public class Pastebin {
 
-    static String token = "";
-    static String devkey = "";
+    static String api_user_key = ""; //Insert your own api_user_key if you have one.
     static String pasteURL = "http://www.pastebin.com/api/api_post.php";
 
     public Pastebin()
@@ -28,16 +27,16 @@ public class Pastebin {
         return "";
     }
 
-    static public String makePaste(String name, Plugin plugin)
+    static public String makePaste(String name, Plugin plugin, String devkey)
             throws UnsupportedEncodingException
     {
         String body = Report.Main(plugin);
         String content = URLEncoder.encode(body, "UTF-8");
         String title = URLEncoder.encode(name + " report", "UTF-8");
-        String data = "api_option=paste&api_user_key=" + Pastebin.token
+        String data = "api_option=paste&api_user_key=" + Pastebin.api_user_key
                 + "&api_paste_private=0&api_paste_name=" + title
                 + "&api_paste_expire_date=1M&api_paste_format=" + "text"
-                + "&api_dev_key=" + Pastebin.devkey + "&api_paste_code=" + content;
+                + "&api_dev_key=" + devkey + "&api_paste_code=" + content;
         String response = Pastebin.page(Pastebin.pasteURL, data);
         String check = Pastebin.checkResponse(response);
         if (!check.equals("")) {
