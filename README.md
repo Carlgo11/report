@@ -9,7 +9,7 @@ Report is an api that allows developers to implement pastebin support for logs i
 * If you want the pure pastebin link (without http://pastebin.com/) do `String purelink = pastebin.replace("http://pastebin.com/", "");`
 * To give the user the link simply do `player.sendMessage(pastebin);`. Of cource you can add more text to the message.
 * When a user is given the link and he/she clicks it they will be redirected to a captcha page. After completing the captcha the pastebin will be created.<br>
-*(If you have entered a user key the pastebin will be created by that user without having the user to enter a login or password. Note that they will not be able to edit any other pastebins created by the user, neither can they edit the user settings)*
+*(If you have entered a user key, the pastebin will be created by that user, without having the user to enter a login or password. Note that they will not be able to edit any other pastebins created by the user, neither can they edit the user settings)*
 * If you want to print out the link to a sender do `sender.sendMessage(pastebin)`.
 
 ## Entering an api-user-key
