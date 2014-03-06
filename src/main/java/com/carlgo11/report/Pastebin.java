@@ -12,8 +12,8 @@ import org.bukkit.plugin.Plugin;
 
 public class Pastebin {
 
-    static String token = "b558dbec597603c726d31633634f294b";
-    static String devkey = "9e7c871d87d0e51a0ee185b4c55ab173";
+    static String token = "";
+    static String devkey = "";
     static String pasteURL = "http://www.pastebin.com/api/api_post.php";
 
     public Pastebin()
