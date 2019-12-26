@@ -1,4 +1,5 @@
 # Report-API
+[![Build Status](https://img.shields.io/github/workflow/status/Carlgo11/report/Java%20CI?style=for-the-badge)](https://github.com/Carlgo11/report/actions)
 [![License](https://img.shields.io/github/license/carlgo11/report?style=for-the-badge)](https://github.com/Carlgo11/report/blob/master/LICENSE.md)
 ![Bukkit](https://img.shields.io/badge/bukkit-v1.15.1-ab7b53?style=for-the-badge)
 
@@ -37,5 +38,12 @@ String api_key = ""; //Pastebin API key
 String user_key = ""; //Pastebin User key (can be left blank)
 
 Report report = new Report(plugin, user_key, api_key); //Call Report class
-report.makeReport(); // Send the data away to Pastebin
+report.makeReport(); //Send the data away to Pastebin
+```
+
+You can then send the URL to the user who sent the request.
+
+```java
+URL url = report.getURL(); //Get the Pastebin URL
+sender.sendMessage("Give this URL to the support agent: " + URL.toString);
 ```
