@@ -9,10 +9,6 @@ public class Report {
     private transient Pastebin pastebin;
     private transient Plugin plugin;
 
-    /*
-     * File created by Carlgo11. And uploaded to https://github.com/carlgo11/report
-     * Please see LICENSE on https://github.com/carlgo11/report for the terms and conditions for distribution of this code.
-     */
     public Report(Plugin parent, String user_key, String dev_key) {
         this.pastebin = new Pastebin(user_key, dev_key);
         this.plugin = parent;
