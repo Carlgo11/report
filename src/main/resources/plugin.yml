@@ -1,0 +1,9 @@
+name: ${project.name}
+main: com.carlgo11.report.Plugin
+version: ${project.version}
+api-version: "1.15"
+author: Carlgo11
+website: https://github.com/carlgo11/report
+load: STARTUP
+description: Plugin API for reporting bugs.
+prefix: Report-API

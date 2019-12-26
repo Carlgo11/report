@@ -1,52 +1,45 @@
 package com.carlgo11.report;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import org.bukkit.plugin.Plugin;
 
 public class Pastebin {
 
-    static String api_user_key = ""; //Insert your own api_user_key if you have one.
-    static String pasteURL = "http://www.pastebin.com/api/api_post.php";
+    private String api_user_key = ""; //Insert your own api_user_key if you have one.
+    private String api_dev_key = "";
 
-    public Pastebin()
-    {
+    public Pastebin(String api_user_key, String api_dev_key) {
+        this.api_user_key = api_user_key;
+        this.api_dev_key = api_dev_key;
     }
 
-    static String checkResponse(String response)
-    {
+    private String checkResponse(String response) {
         if (response.substring(0, 15).equals("Bad API request")) {
             return response.substring(17);
         }
         return "";
     }
 
-    static public String makePaste(String name, Plugin plugin, String devkey)
-            throws UnsupportedEncodingException
-    {
-        String body = Report.Main(plugin);
+    public String makePaste(String name, String body) throws UnsupportedEncodingException {
         String content = URLEncoder.encode(body, "UTF-8");
         String title = URLEncoder.encode(name + " report", "UTF-8");
-        String data = "api_option=paste&api_user_key=" + Pastebin.api_user_key
+        String data = "api_option=paste&api_user_key=" + this.api_user_key
                 + "&api_paste_private=0&api_paste_name=" + title
                 + "&api_paste_expire_date=1M&api_paste_format=" + "text"
-                + "&api_dev_key=" + devkey + "&api_paste_code=" + content;
-        String response = Pastebin.page(Pastebin.pasteURL, data);
-        String check = Pastebin.checkResponse(response);
+                + "&api_dev_key=" + this.api_dev_key + "&api_paste_code=" + content;
+        String pasteURL = "http://www.pastebin.com/api/api_post.php";
+        String response = this.page(pasteURL, data);
+        assert response != null;
+        String check = this.checkResponse(response);
         if (!check.equals("")) {
             return check;
         }
         return response;
     }
 
-    static String page(String uri, String urlParameters)
-    {
+    private String page(String uri, String urlParameters) {
         URL url;
         HttpURLConnection connection = null;
         try {
@@ -58,7 +51,7 @@ public class Pastebin {
                     "application/x-www-form-urlencoded");
 
             connection.setRequestProperty("Content-Length",
-                    "" + Integer.toString(urlParameters.getBytes().length));
+                    "" + urlParameters.getBytes().length);
             connection.setRequestProperty("Content-Language", "en-US");
 
             connection.setUseCaches(false);
